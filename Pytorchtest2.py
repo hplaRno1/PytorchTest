@@ -3,7 +3,11 @@ import torch.nn as nn
 
 # Check if CUDA is available, else use CPU
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-print("Using device:", device)
+#print("Using device:", device)
+if (device):
+    print("You have a CUDA-supported GPU!")
+else:
+    print("You do not have a CUDA-supported GPU, instead using: ", device)
 
 # Create two simple tensors
 x = torch.tensor([[1, 2], [3, 4]], dtype=torch.float32, device=device)
@@ -46,7 +50,7 @@ loss = criterion(output, target)
 print("Loss:")
 print(loss.item())
 
-# Perform a backward pass to compute gradients
+# Perform a backward pass to compute gradients; this functions as backpropagation
 loss.backward()
 print("Backward pass completed.")
 
